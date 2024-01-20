@@ -1,0 +1,59 @@
+{
+    "2": {
+        "name": "Bob",
+        "movies": [
+            {
+                "id": 9,
+                "title": "Cars",
+                "poster": "https://m.media-amazon.com/images/M/MV5BMTg5NzY0MzA2MV5BMl5BanBnXkFtZTYwNDc3NTc2._V1_SX300.jpg",
+                "rating": "7.2",
+                "year": "2006"
+            },
+            {
+                "id": 10,
+                "title": "Finding Nemo",
+                "poster": "https://m.media-amazon.com/images/M/MV5BZjMxYzBiNjUtZDliNC00MDAyLTg3N2QtOWNjNmNhZGQzNDg5XkEyXkFqcGdeQXVyNjE2MjQwNjc@._V1_SX300.jpg",
+                "rating": "8.2",
+                "year": "2003"
+            }
+        ]
+    },
+    "3": {
+        "name": "Lucas",
+        "movies": [
+            {
+                "id": 1,
+                "title": "Matrix",
+                "poster": "https://m.media-amazon.com/images/M/MV5BYzUzOTA5ZTMtMTdlZS00MmQ5LWFmNjEtMjE5MTczN2RjNjE3XkEyXkFqcGdeQXVyNTc2ODIyMzY@._V1_SX300.jpg",
+                "rating": "7.8",
+                "year": "1993"
+            },
+            {
+                "id": 2,
+                "title": "Cidade de Deus",
+                "poster": "N/A",
+                "rating": "10",
+                "year": "2023"
+            }
+        ]
+    },
+    "4": {
+        "name": "Carol",
+        "movies": [
+            {
+                "id": 1,
+                "title": "Stuart Little",
+                "poster": "https://m.media-amazon.com/images/M/MV5BMDJlZWZiODItMGE3NC00Yzg3LWFhYTYtZTI2YWNlNjExMDE4XkEyXkFqcGdeQXVyMTA0MjU0Ng@@._V1_SX300.jpg",
+                "rating": "6.2",
+                "year": "1999"
+            },
+            {
+                "id": 2,
+                "title": "Chicago",
+                "poster": "https://m.media-amazon.com/images/M/MV5BN2E3NDU1ZTktNzZjNy00MWU3LWI4YmMtMjdjNTIzMDU0MDdiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg",
+                "rating": "7.2",
+                "year": "2002"
+            }
+        ]
+    }
+}

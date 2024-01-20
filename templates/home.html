@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MovieWeb App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="welcome-header">
+        <h1 class="title">MovieWeb App!</h1>
+    </div>
+    <div class="users-button">
+        <a href="{{ url_for('list_users') }}" class="btn">USERS</a>
+        <a href="{{ url_for('add_user') }}" class="btn">ADD NEW USER</a>
+    </div>
+    <div class="image-section">
+        <h2>Featured Movies</h2>
+        <div class="image-row">
+            {% for i in range(1, 5) %}  {# Assuming you have 4 images #}
+            <div class="image-container">
+                <img src="{{ url_for('static', filename='images/image' + i|string + '.jpg') }}" alt="Featured Movie">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

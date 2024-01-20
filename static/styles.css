@@ -1,0 +1,246 @@
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #E8F8F5;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a:hover {
+  color: #E8F8F5;
+}
+
+
+.users {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 -25px; /* Add a negative margin to create the gap on both sides */
+}
+
+.user-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.user-box {
+  width: 200px; /* Set the width to 200px */
+  height: 200px; /* Set the height to 200px */
+  margin-bottom: 50px;
+  background-color: #fff;
+  color: #333;
+  border-radius: 8px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  padding: 15px;
+  margin: 25px; /* Add a margin to create the gap on both sides */
+  transition: background-color 0.3s ease; /* Add a transition for the hover effect */
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+}
+
+/* user_movies*/
+.movies-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width-max:1200px
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ensure the card is centered vertically */
+}
+
+.list-of-cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap:100px;
+}
+
+.card {
+
+    text-align: center;
+    border: 2px solid black;
+    background: white;
+    padding: 10px;
+    width: 600px;
+}
+
+.btn-container {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #3EBF7F;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    text-color: black
+    border: none;
+    cursor: pointer;
+    margin:20px;
+    border-radius: 8px;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+.movie-poster {
+    width: 100%;
+    height: 500px; /* Adjust the height as needed */
+    background-size: cover;
+    background-position: center;
+}
+.movie-details{
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: 20px
+}
+
+
+.title {
+    font-size: 45px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.users-button {
+    display:flex;
+    justify-content: center;
+    }
+
+.image-section {
+    text-align: center;
+    margin-top: 20px;
+    margin:25px;
+}
+
+.image-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.image-container {
+    width: 300px;
+    height: 400px;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 1px solid #ccc;
+}
+
+.user-container{
+    margin: 50px 250px;
+}
+
+
+/* Style the Home button */
+.btn-home {
+    background-color: #2ecc71; /* Change to your preferred color */
+    color: white; /* Set text color for the button */
+    border-radius: 8px; /* Round edges */
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+/* Adjust width and layout of user cards */
+.user-card {
+    background-color: #2ecc71;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    width: calc(45% - 40px); /* Set width for one card in a row */
+    display: inline-block; /* Display cards in a row */
+    vertical-align: top; /* Align cards at the top */
+}
+.user_name {
+    display:flex;
+    justify-content: center;
+    }
+
+/* Style the "View Movies" button */
+.btn-view {
+    display:flex;
+    justify-content: center;
+    background-color: #E8F8F5; /* Change to your preferred color */
+    color: black; /* Set text color for the button */
+    border-radius: 8px; /* Round edges */
+    padding: 8px 15px;
+    text-decoration: none;
+}
+
+.add-user-form {
+    margin:150px 20px}
+
+/* Style the update movie form */
+.update-movie-form {
+    text-align: center; /* Center align the form */
+    margin: 20px 270px;
+    width:500px
+}
+
+/* Style the form fields */
+.form-field {
+    margin-bottom: 15px; /* Add space between form fields */
+}
+
+.form-field label {
+    display: block; /* Display labels as blocks to ensure vertical alignment */
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 5px; /* Add spacing below labels */
+}
+
+.form-field input[type="text"] {
+    width: 100%; /* Expand the input to fill the available width */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-field input[type="submit"] {
+    display:flex;
+    background-color: #3EBF7F; /* Change to your preferred color */
+    margin-top:30px;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.error-container{
+    display:flex;
+    align-items:center;
+    flex-direction: column
+    }
