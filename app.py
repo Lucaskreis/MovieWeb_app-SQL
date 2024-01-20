@@ -1,11 +1,13 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from models import db, User, Movie
+import requests
+from sqlalchemy.exc import IntegrityError
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///movieweb.db'
 db.init_app(app)
-
+URL = "http://www.omdbapi.com/?apikey=19391c77&"
 
 # Home route
 @app.route('/')
@@ -55,10 +57,22 @@ def add_movie(user_id):
 
     if request.method == 'POST':
         movie_title = request.form['movie_title']
+        # Fetch movie data from OMDB API
+        omdb_api_key = "19391c77"
+        omdb_api_url = f"http://www.omdbapi.com/?apikey={omdb_api_key}&t={movie_title}"
+        response = requests.get(omdb_api_url)
+        movie_data = response.json()
+
+        if "Error" in movie_data:
+            return f"Error: {movie_data['Error']}"
+
+        # Create a new Movie object using data from the API
         new_movie = Movie(
             user_id=user_id,
-            title=movie_title,
-            # Add other movie attributes as needed
+            title=movie_data.get('Title', ''),
+            rating=movie_data.get('imdbRating', ''),
+            year=movie_data.get('Year', ''),
+            poster=movie_data.get('Poster', '')
         )
 
         db.session.add(new_movie)
@@ -98,6 +112,14 @@ def delete_user(user_id):
     user = User.query.get(user_id)
 
     if user:
+        # Delete associated movies first
+        try:
+            Movie.query.filter_by(user_id=user_id).delete()
+            db.session.commit()
+        except IntegrityError:
+            db.session.rollback()  # Handle IntegrityError due to foreign key constraints
+
+        # Now delete the user
         db.session.delete(user)
         db.session.commit()
 

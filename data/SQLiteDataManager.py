@@ -3,7 +3,7 @@ from models import db, User, Movie
 
 class SQLiteDataManager:
     def __init__(self):
-        pass  # Optionally, you can initialize any required configurations here
+        pass
 
     def add_user(self, username):
         new_user = User(username=username)
@@ -27,7 +27,8 @@ class SQLiteDataManager:
                 user_id=user_id,
                 title=movie_data.get('Title'),
                 rating=movie_data.get('imdbRating'),
-                year=movie_data.get('Year')
+                year=movie_data.get('Year'),
+                poster=movie_data.get('Poster')
             )
             db.session.add(new_movie)
             db.session.commit()
@@ -38,6 +39,7 @@ class SQLiteDataManager:
             movie.title = updated_movie_data.get('title')
             movie.rating = updated_movie_data.get('rating')
             movie.year = updated_movie_data.get('year')
+            movie.poster = updated_movie_data.get('Poster')
             db.session.commit()
 
     def delete_user(self, user_id):

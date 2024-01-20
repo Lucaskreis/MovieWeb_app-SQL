@@ -15,3 +15,4 @@ class Movie(db.Model):
     title = db.Column(db.String(255), nullable=False)
     rating = db.Column(db.DECIMAL(3, 1))
     year = db.Column(db.Integer)
+    poster = db.Column(db.String(255))
