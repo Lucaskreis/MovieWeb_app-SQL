@@ -3,9 +3,9 @@ from abc import ABC, abstractmethod
 
 class DataManagerInterface(ABC):
 
-    @abstractmethod
-    def get_all_users(self):
-        pass
+    # @abstractmethod
+    # def get_all_users(self):
+    #     pass
 
     @abstractmethod
     def get_user_movies(self, user_id):
@@ -23,9 +23,9 @@ class DataManagerInterface(ABC):
     def add_movie_to_user(self, user_id, movie_data):
         pass
 
-    @abstractmethod
-    def generate_unique_id(self, existing_movies):
-        pass
+    # @abstractmethod
+    # def generate_unique_id(self, existing_movies):
+    #     pass
 
     @abstractmethod
     def update_movie(self, user_id, movie_id, updated_movie):

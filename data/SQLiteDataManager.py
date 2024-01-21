@@ -1,12 +1,14 @@
-from models import db, User, Movie
-from data_manager import DataManagerInterface
-
+from models import db, User, Movie, Review
+from data.data_manager import DataManagerInterface
 from flask_sqlalchemy import SQLAlchemy
+from flask import Flask
 
 
 class SQLiteDataManager(DataManagerInterface):
     def __init__(self, db_file_name):
-        self.db = SQLAlchemy(db_file_name)
+        self.app = Flask(__name__)
+        self.app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///movieweb.db'
+        self.db = SQLAlchemy(self.app)
 
     def add_user(self, username):
         new_user = User(username=username)
@@ -57,6 +59,15 @@ class SQLiteDataManager(DataManagerInterface):
             db.session.delete(movie)
             db.session.commit()
 
+    def get_movie_by_id(self, movie_id):
+        return Movie.query.get(movie_id)
 
-    def list_movies(self):
-        pass
+    def add_review_to_movie(self, movie_id, username, review_text, review_date):
+        movie = self.get_movie_by_id(movie_id)
+
+        if movie:
+            review = Review(username=username, text=review_text, date=review_date)
+            movie.reviews.append(review)
+
+            db.session.add(movie)
+            db.session.commit()

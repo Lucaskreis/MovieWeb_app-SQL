@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ movie.title }} - Reviews</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Add Review for {{ movie.title }}</h1>
+    <form method="post" action="{{ url_for('add_review', movie_id=movie.movie_id, username=username) }}">
+        <label for="username">Your Username:</label>
+        <input type="text" id="username" name="username" value="{{ username }}" >
+
+        <label for="review_text">Your Review:</label>
+        <textarea id="review_text" name="review_text" required></textarea>
+
+        <button type="submit">Submit Review</button>
+    </form>
+    <!-- Your other content here -->
+</body>
+</html>
