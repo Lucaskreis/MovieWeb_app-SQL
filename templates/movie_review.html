@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ movie.title }} - Reviews</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div>
+        <h1 class="title">{{ movie.title }}</h1>
+    </div>
+    <div class="user-container">
+        <div class="header-buttons">
+            <a href="{{ url_for('home') }}" class="btn">HOME</a>
+            <a href="{{ url_for('list_movies') }}" class="btn">MOVIES</a>
+        </div>
+
+        <div class="movies-list">
+            <ul class="list-of-cards">
+                {% if reviews %}
+                    {% for review in reviews %}
+                     <li>
+                        <div class="card">
+                            <div class="movie-poster" style="background-image: url('{{ movie['poster'] }}');"></div>
+                            <div class="movie-details">
+                                <p class="review-text">{{ review.text }}</p>
+                                <p class="review-date">Posted on {{ review.date }}</p>
+                            </div>
+
+                        </div>
+                    </li>
+                    {% endfor %}
+                {% else %}
+                    <p>No reviews available for this movie.</p>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>

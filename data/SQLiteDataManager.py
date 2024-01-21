@@ -1,9 +1,12 @@
 from models import db, User, Movie
+from data_manager import DataManagerInterface
+
+from flask_sqlalchemy import SQLAlchemy
 
 
-class SQLiteDataManager:
-    def __init__(self):
-        pass
+class SQLiteDataManager(DataManagerInterface):
+    def __init__(self, db_file_name):
+        self.db = SQLAlchemy(db_file_name)
 
     def add_user(self, username):
         new_user = User(username=username)
@@ -53,3 +56,7 @@ class SQLiteDataManager:
         if movie and movie.user_id == user_id:
             db.session.delete(movie)
             db.session.commit()
+
+
+    def list_movies(self):
+        pass

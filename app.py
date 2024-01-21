@@ -1,13 +1,15 @@
+from data.SQLiteDataManager import SQLiteDataManager
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-from models import db, User, Movie
+from models import db, User, Movie, Review
 import requests
 from sqlalchemy.exc import IntegrityError
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///movieweb.db'
 db.init_app(app)
-URL = "http://www.omdbapi.com/?apikey=19391c77&"
+
+
 
 # Home route
 @app.route('/')
@@ -137,6 +139,34 @@ def delete_movie(user_id, movie_id):
         db.session.commit()
 
     return redirect(url_for('user_movies', user_id=user_id))
+
+
+@app.route('/movies')
+def list_movies():
+    movies = Movie.query.all()
+    return render_template('movies.html', movies=movies)
+
+
+@app.route('/movies/<int:movie_id>')
+def movie_review(movie_id):
+    movie = Movie.query.get(movie_id)
+    if movie is None:
+        return "User not found"
+    reviews = movie.reviews
+    return render_template('movie_review.html', movie=movie, reviews=reviews)
+
+
+@app.route('/movies/<int:movie_id>/add_review')
+def add_review(movie_id):
+    movie = Movie.query.get(movie_id)
+
+    if movie is None:
+        return "Movie not found"
+
+    if request.method == 'POST':
+        text = request.form['text']
+
+    new_review = Review()
 
 
 # 404 error handler
