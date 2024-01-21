@@ -69,7 +69,7 @@ def add_movie(user_id):
         data_manager.add_movie_to_user(user_id, movie_data)
         return redirect(url_for('user_movies', user_id=user_id))
 
-    return render_template('add_movie.html', user=user)
+    return render_template('user_movies.html', user=user, movies=_, user_id=user_id)
 
 
 # Update movie route
