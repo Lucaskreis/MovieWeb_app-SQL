@@ -25,7 +25,7 @@
                                 <p class="review-text">{{ review.text }}</p>
                                 <p class="review-date">Posted on {{ review.date }}</p>
                             </div>
-
+                            <a href="{{ url_for('delete_review', movie_id=review['movie_id'], review_id=review['review_id']) }}" class="btn">Delete</a>
                         </div>
                     </li>
                     {% endfor %}

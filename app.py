@@ -14,7 +14,6 @@ db.init_app(app)
 data_manager = SQLiteDataManager('instance/movieweb.db')
 
 
-
 # Home route
 @app.route('/')
 def home():
@@ -111,6 +110,7 @@ def delete_user(user_id):
     except ValueError as e:
         return f"Error: {str(e)}"
 
+
 # Delete movie route
 @app.route('/users/<int:user_id>/delete_movie/<int:movie_id>')
 def delete_movie(user_id, movie_id):
@@ -158,7 +158,11 @@ def add_review(movie_id):
     return render_template('add_review.html', movie=movie_to_review)
 
 
-#delete review route
+@app.route('/movie/<int:movie_id>/add_review/<int:review_id>')
+def delete_review(movie_id, review_id):
+    data_manager.delete_review(review_id)
+    return redirect(url_for('list_movies'))
+
 
 # 404 error handler
 @app.errorhandler(404)

@@ -71,3 +71,9 @@ class SQLiteDataManager(DataManagerInterface):
 
             db.session.add(movie)
             db.session.commit()
+
+    def delete_review(self, review_id):
+        review = Review.query.get(review_id)
+        if review:
+            db.session.delete(review)
+            db.session.commit()
