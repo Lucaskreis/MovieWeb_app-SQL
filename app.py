@@ -125,26 +125,25 @@ def delete_movie(user_id, movie_id):
 
 @app.route('/movies')
 def list_movies():
-    movies = Movie.query.all()
-    return render_template('movies.html', movies=movies)
+    unique_movies = set()
+    movies_without_duplicates = []
+
+    all_movies = Movie.query.all()
+
+    for movie in all_movies:
+        # Use the title for uniqueness (you may need to adjust this based on your data model)
+        if movie.title not in unique_movies:
+            unique_movies.add(movie.title)
+            movies_without_duplicates.append(movie)
+
+    return render_template('movies.html', movies=movies_without_duplicates)
 
 
-@app.route('/movies/<int:movie_id>')
+@app.route('/movies/<int:movie_id>', methods=['GET', 'POST'])
 def movie_review(movie_id):
     movie = data_manager.get_movie_by_id(movie_id)
     if movie is None:
         return "User not found"
-    reviews = movie.reviews
-    return render_template('movie_review.html', movie=movie, reviews=reviews)
-
-
-@app.route('/movies/<int:movie_id>/add_review', methods=['GET', 'POST'])
-def add_review(movie_id):
-    movie_to_review = data_manager.get_movie_by_id(movie_id)
-
-    if movie_to_review is None:
-        return "Movie not found"
-
     if request.method == 'POST':
         username = request.form['username']
         review_text = request.form['review_text']
@@ -155,7 +154,9 @@ def add_review(movie_id):
         flash('Review added successfully!', 'success')
         return redirect(url_for('movie_review', movie_id=movie_id))
 
-    return render_template('add_review.html', movie=movie_to_review)
+    reviews = movie.reviews
+    return render_template('movie_review.html', movie=movie, reviews=reviews)
+
 
 
 @app.route('/movie/<int:movie_id>/add_review/<int:review_id>')

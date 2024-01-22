@@ -17,7 +17,7 @@
             <div class="user-card">
                 <h2 class="user_name"> {{ movie["title"] }}</h2>
                 <a href="{{ url_for('movie_review', movie_id=movie['movie_id']) }}" class="btn btn-view">View reviews</a>
-                <a href="{{ url_for('add_review', movie_id=movie['movie_id']) }}" class="btn btn-view">Add Reviews</a>
+
             </div>
             {% endfor %}
         </div>

@@ -257,9 +257,62 @@ a:hover {
     cursor: pointer;
     font-weight: bold;
 }
+.review_box{
+    width: max; /* Adjust the width as needed */
+    height: 150px; /* Adjust the height as needed */
+    resize: none;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.review_form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input_button{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+
+.review_label {
+    margin: 5px;
+    font-weight: bold;
+}
+
+.btn-submit {
+    display: inline-block;
+    background-color: #3EBF7F;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    text-color: black
+    border: none;
+    cursor: pointer;
+    margin:20px;
+    border-radius: 8px;
+    font-weight: bold;
+    padding: 10px 20px;
+    width: 200px;
+}
+
+.review_input{
+    width: 250px;
+    height:30px;
+    border-radius: 8px;
+
+}
+
+.review-date{
+    font-size: 15px;
+    font-weight: normal;
 
 .error-container{
     display:flex;
     align-items:center;
     flex-direction: column
     }
+

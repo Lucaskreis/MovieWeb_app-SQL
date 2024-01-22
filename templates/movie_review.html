@@ -12,6 +12,19 @@
         <div class="header-buttons">
             <a href="{{ url_for('home') }}" class="btn">HOME</a>
             <a href="{{ url_for('list_movies') }}" class="btn">MOVIES</a>
+
+        </div>
+        <div>
+                <form method="post" action="{{ url_for('movie_review', movie_id=movie.movie_id, username=username) }}" class="review_form">
+
+                    <textarea id="review_text" name="review_text" class="review_box" required></textarea>
+
+                    <div class="input_button">
+                        <label for="username" class="review_label">Your Username:</label>
+                        <input type="text" id="username" name="username" value="{{ username }}" class="review_input" >
+                        <button type="submit" class="btn-submit" >Submit Review</button>
+                    </div>
+                </form>
         </div>
 
         <div class="movies-list">
@@ -20,9 +33,9 @@
                     {% for review in reviews %}
                      <li>
                         <div class="card">
-                            <div class="movie-poster" style="background-image: url('{{ movie['poster'] }}');"></div>
+
                             <div class="movie-details">
-                                <p class="review-text">{{ review.text }}</p>
+                                <p class="review-text">{{review.username}}: {{ review.text }}</p>
                                 <p class="review-date">Posted on {{ review.date }}</p>
                             </div>
                             <a href="{{ url_for('delete_review', movie_id=review['movie_id'], review_id=review['review_id']) }}" class="btn">Delete</a>
